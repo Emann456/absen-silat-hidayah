@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Mobile App Configuration & Status Bar -->
+    <title>Abskas Pro</title>
+    
+    <!-- Mobile App Configuration & Status Bar (PWA) -->
     <meta name="theme-color" content="#0f172a">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Abskas Pro">
     <meta name="application-name" content="Abskas Pro">
-    
+
     <!-- Logo / App Icon Modern (Gradient Sky-Indigo + Badge Logo) -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%230284c7;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%234338ca;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='512' height='512' rx='128' fill='url(%23grad)'/%3E%3Cpath fill='white' d='M152 120h208c13.3 0 24 10.7 24 24v224c0 13.3-10.7 24-24 24H152c-13.3 0-24-10.7-24-24V144c0-13.3 10.7-24 24-24zm56 64c-13.3 0-24 10.7-24 24s10.7 24 24 24 24-10.7 24-24-10.7-24-24-24zm96 0c-13.3 0-24 10.7-24 24s10.7 24 24 24 24-10.7 24-24-10.7-24-24-24zm-96 96c-13.3 0-24 10.7-24 24s10.7 24 24 24 24-10.7 24-24-10.7-24-24-24zm96 0c-13.3 0-24 10.7-24 24s10.7 24 24 24 24-10.7 24-24-10.7-24-24-24z'/%3E%3Ccircle cx='380' cy='130' r='45' fill='%2310b981' stroke='%230f172a' stroke-width='10'/%3E%3C/svg%3E">
-    
     <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%230284c7;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%234338ca;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='512' height='512' rx='128' fill='url(%23grad)'/%3E%3Cpath fill='white' d='M152 120h208c13.3 0 24 10.7 24 24v224c0 13.3-10.7 24-24 24H152c-13.3 0-24-10.7-24-24V144c0-13.3 10.7-24 24-24zm56 64c-13.3 0-24 10.7-24 24s10.7 24 24 24 24-10.7 24-24-10.7-24-24-24zm96 0c-13.3 0-24 10.7-24 24s10.7 24 24 24 24-10.7 24-24-10.7-24-24-24zm-96 96c-13.3 0-24 10.7-24 24s10.7 24 24 24 24-10.7 24-24-10.7-24-24-24zm96 0c-13.3 0-24 10.7-24 24s10.7 24 24 24 24-10.7 24-24-10.7-24-24-24z'/%3E%3Ccircle cx='380' cy='130' r='45' fill='%2310b981' stroke='%230f172a' stroke-width='10'/%3E%3C/svg%3E">
-        
-    <title>Abskas Pro</title>
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -101,8 +101,8 @@
                 <div class="bg-slate-800/60 border border-slate-700/60 rounded-xl p-3 text-[11px] text-slate-400 flex items-start gap-2">
                     <i class="fa-solid fa-circle-info text-sky-400 mt-0.5"></i>
                     <div>
-                        <p id="hint-text-coach"><span class="font-bold text-sky-400">Pelatih baik hati:)</span>
-                        <p id="hint-text-senior" class="hidden"><span class="font-bold text-indigo-400">PIN Senior tanya ke pelatih!</span>
+                        <p id="hint-text-coach"><span class="font-bold text-sky-400">Default PIN Pelatih:)</span></p>
+                        <p id="hint-text-senior" class="hidden"><span class="font-bold text-indigo-400">PIN Senior tanya ke pelatih!</span></p>
                     </div>
                 </div>
 
@@ -132,7 +132,7 @@
                         </div>
                         <div>
                             <h1 class="font-bold text-lg leading-tight">Abskas Pro</h1>
-                            <p class="text-xs text-slate-400">Beta</p>
+                            <p class="text-xs text-slate-400">Versi Beta</p>
                         </div>
                     </div>
 
@@ -160,7 +160,7 @@
             <div class="bg-slate-800 border-t border-slate-700/60 overflow-x-auto custom-scrollbar">
                 <div class="max-w-7xl mx-auto px-4 flex space-x-1 sm:space-x-2 py-2 text-sm whitespace-nowrap">
                     <button onclick="switchTab('dashboard')" id="tab-dashboard" class="tab-btn active px-4 py-2 rounded-lg font-medium text-xs sm:text-sm flex items-center gap-2 transition bg-sky-600 text-white">
-                        <i class="fa-solid fa-chart-pie"></i> Dashboard
+                        <i class="fa-solid fa-chart-pie"></i> Home
                     </button>
                     <button onclick="switchTab('absensi')" id="tab-absensi" class="tab-btn px-4 py-2 rounded-lg font-medium text-xs sm:text-sm text-slate-300 hover:bg-slate-700 hover:text-white flex items-center gap-2 transition">
                         <i class="fa-solid fa-clipboard-user"></i> Absensi
@@ -193,7 +193,7 @@
                 <div class="bg-gradient-to-r from-sky-600 to-indigo-700 rounded-2xl p-6 text-white shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                     <div>
                         <h2 class="text-2xl font-bold">Selamat Datang, <span id="dash-user-name">Pelatih</span>!</h2>
-                        <p class="text-sky-100 text-sm mt-1">Reminder absen dan kas, langsung dipantau kak Fathur</p>
+                        <p class="text-sky-100 text-sm mt-1">Reminder absen dan kas disini. langsung bisa dipantau Kak Fathur!</p>
                     </div>
                     <div class="flex items-center gap-3">
                         <button onclick="switchTab('absensi')" class="bg-white text-sky-700 font-semibold px-4 py-2.5 rounded-xl hover:bg-sky-50 transition shadow text-xs sm:text-sm flex items-center gap-2">
@@ -305,14 +305,14 @@
 
                     <!-- Student Attendance List -->
                     <div class="mt-6 overflow-x-auto">
-                        <table class="w-full text-left text-sm">
+                        <table class="w-full text-left text-sm whitespace-nowrap">
                             <thead class="bg-slate-50 text-slate-600 text-xs font-semibold uppercase tracking-wider rounded-lg">
                                 <tr>
                                     <th class="p-3.5 rounded-l-xl">No</th>
                                     <th class="p-3.5">Nama Anggota</th>
                                     <th class="p-3.5">Kelas</th>
                                     <th class="p-3.5 text-center">Status Kehadiran</th>
-                                    <th class="p-3.5 rounded-r-xl">Catatan / Keterangan</th>
+                                    <th class="p-3.5 rounded-r-xl w-1/3">Catatan / Keterangan</th>
                                 </tr>
                             </thead>
                             <tbody id="attendance-table-body" class="divide-y divide-slate-100">
@@ -360,7 +360,7 @@
 
                         <!-- List Members Kas Table -->
                         <div class="overflow-x-auto">
-                            <table class="w-full text-left text-sm">
+                            <table class="w-full text-left text-sm whitespace-nowrap">
                                 <thead class="bg-slate-50 text-slate-600 text-xs font-semibold uppercase">
                                     <tr>
                                         <th class="p-3 rounded-l-lg">Nama</th>
@@ -450,7 +450,7 @@
 
                     <!-- Member Table -->
                     <div class="mt-4 overflow-x-auto">
-                        <table class="w-full text-left text-sm">
+                        <table class="w-full text-left text-sm whitespace-nowrap">
                             <thead class="bg-slate-50 text-slate-600 text-xs font-semibold uppercase">
                                 <tr>
                                     <th class="p-3.5 rounded-l-xl">No</th>
@@ -539,7 +539,7 @@
 
                     <!-- Summary Table -->
                     <div class="overflow-x-auto">
-                        <table class="w-full text-left text-sm">
+                        <table class="w-full text-left text-sm whitespace-nowrap">
                             <thead class="bg-slate-100 text-slate-700 text-xs font-semibold uppercase">
                                 <tr>
                                     <th class="p-3.5 rounded-l-xl">Nama Siswa</th>
@@ -582,7 +582,7 @@
 
                     <!-- Senior List Table -->
                     <div class="overflow-x-auto">
-                        <table class="w-full text-left text-sm">
+                        <table class="w-full text-left text-sm whitespace-nowrap">
                             <thead class="bg-slate-50 text-slate-600 text-xs font-semibold uppercase">
                                 <tr>
                                     <th class="p-3.5 rounded-l-xl">Nama Senior</th>
@@ -861,7 +861,6 @@
     <script>
         // ==============================================================================
         // KREDENSIAL SUPABASE OTOMATIS (AUTO-CONNECT)
-        // Masukkan Anon Key Anda yang panjang di bawah ini agar otomatis Live Sync
         // ==============================================================================
         const AUTO_SUPABASE_URL = 'https://mktaltkkrmpmuddxvphz.supabase.co';
         const AUTO_SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1rdGFsdGtrcm1wbXVkZHh2cGh6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc2NzE2NDEsImV4cCI6MjEwMzI0NzY0MX0.0cftehQBNpOacUk6aAJyGcw0Ra9zoBnqe4ainRzBi1w'; 
@@ -871,23 +870,13 @@
 
         // Core state data structure
         let state = {
-            members: [
-                { id: 'm-1', name: 'Ahmad Fauzi', class: 'X IPA 1', phone: '08123456781', status: 'Aktif', weight: 65, height: 172, skills: 'Smash Power, Servis Atas' },
-                { id: 'm-2', name: 'Bhakti Utama', class: 'X IPS 2', phone: '08123456782', status: 'Aktif', weight: 58, height: 168, skills: 'Defense, Passing Bawah' },
-                { id: 'm-3', name: 'Citra Kirana', class: 'XI IPA 3', phone: '08123456783', status: 'Aktif', weight: 52, height: 160, skills: 'Setting, Agility' },
-                { id: 'm-4', name: 'Dewi Lestari', class: 'XI IPS 1', phone: '08123456784', status: 'Aktif', weight: 55, height: 165, skills: 'Blocking, Servis Presisi' }
-            ],
+            members: [],
             attendance: {},
             kas: {},
             expenses: [],
-            seniors: [
-                { id: 'sn-1', name: 'Senior Dimas', username: 'dimas', pin: '1122' }
-            ],
-            materi: [
-                { id: 'mat-1', title: 'Teknik Dasar Passing & Control', category: 'Dasar', status: 'Sudah Dipelajari', date: '2026-08-10', notes: 'Semua anggota aktif sudah lulus evaluasi passing 10x tanpa jatuh.' },
-                { id: 'mat-2', title: 'Formasi Pertahanan 3-3 & Transisi', category: 'Menengah', status: 'Dalam Proses', date: '2026-08-20', notes: 'Perlu pengulangan untuk koordinasi rotasi posisi.' },
-                { id: 'mat-3', title: 'Strategi Counter Attack & Jump Serve', category: 'Lanjutan', status: 'Belum Dipelajari', date: '2026-09-05', notes: 'Dijadwalkan setelah fisik & tinggi lompatan memenuhi standar.' }
-            ],
+            akumulasiPengeluaran: 0, // <-- FIX: Logika pengeluaran yang direset agar saldo tak kacau
+            seniors: [],
+            materi: [],
             coachPin: '123456',
             supabaseUrl: AUTO_SUPABASE_URL,
             supabaseKey: AUTO_SUPABASE_KEY
@@ -910,7 +899,6 @@
                     const parsed = JSON.parse(stored);
                     state = { ...state, ...parsed };
                     
-                    // Paksa gunakan key otomatis jika di localstorage masih kosong/lama
                     if (!state.supabaseUrl) state.supabaseUrl = AUTO_SUPABASE_URL;
                     if (!state.supabaseKey) state.supabaseKey = AUTO_SUPABASE_KEY;
                 }
@@ -937,12 +925,8 @@
                     updateDbStatusIndicator(true);
                     fetchFromSupabase();
                     
-                    // Mencegah SecurityError di Mode Canvas/Iframe (Pemblokiran WSS)
-                    // Jika website dibuka langsung (Vercel), Realtime akan otomatis ON.
                     if (window.self === window.top) {
                         subscribeToSupabaseRealtime();
-                    } else {
-                        console.warn("Berjalan di Mode Pratinjau Canvas: Live WebSocket dinonaktifkan untuk menghindari SecurityError.");
                     }
                 } catch (e) {
                     console.error("Supabase init error:", e);
@@ -977,7 +961,6 @@
                     .single();
 
                 if (data && data.data) {
-                    // Combine cloud state preserving local config credentials
                     const cloudState = data.data;
                     state = {
                         ...state,
@@ -1063,7 +1046,6 @@
 
         // Navigation & Role Handling
         window.switchTab = function(tabName) {
-            // Guard: Cegah akun non-pelatih membuka tab kelola akun senior
             if (currentUserRole !== 'Pelatih Utama' && tabName === 'pengguna') {
                 tabName = 'dashboard';
             }
@@ -1091,7 +1073,6 @@
             if (tabName === 'materi') renderMateriSection();
             if (tabName === 'pengguna') renderSeniorTable();
 
-            // Terapkan proteksi hak akses setelah class tombol diperbarui
             applyRolePermissions();
         };
 
@@ -1165,7 +1146,6 @@
             }
         };
 
-        // Fungsi Simpan Sesi Login
         function saveLoginSession() {
             const sessionData = {
                 role: currentUserRole,
@@ -1175,25 +1155,22 @@
             localStorage.setItem(SESSION_KEY, JSON.stringify(sessionData));
         }
 
-        // Fungsi Cek Sesi Login Aktif (1 Hari / 24 Jam)
         function checkLoginSession() {
             const sessStr = localStorage.getItem(SESSION_KEY);
             if (sessStr) {
                 try {
                     const sess = JSON.parse(sessStr);
                     const now = new Date().getTime();
-                    const oneDay = 24 * 60 * 60 * 1000; // 24 Jam dalam milidetik
+                    const oneDay = 24 * 60 * 60 * 1000;
                     
                     if (now - sess.timestamp < oneDay) {
                         currentUserRole = sess.role;
                         currentSeniorData = sess.seniorData;
                         
-                        // Perbarui timestamp agar user tidak ter-logout jika masih aktif
                         saveLoginSession(); 
                         enterApp(false); 
                         return true;
                     } else {
-                        // Sesi expired, hapus dari memori
                         localStorage.removeItem(SESSION_KEY);
                     }
                 } catch(e) {
@@ -1218,7 +1195,7 @@
         }
 
         window.logoutUser = function() {
-            localStorage.removeItem(SESSION_KEY); // Hapus sesi saat logout
+            localStorage.removeItem(SESSION_KEY);
             document.getElementById('app-container').classList.add('hidden');
             document.getElementById('app-container').classList.remove('flex');
             document.getElementById('gate-pin').value = '';
@@ -1243,7 +1220,6 @@
                 dashName.innerText = isPelatih ? "Pelatih" : (currentSeniorData ? currentSeniorData.name : 'Senior');
             }
 
-            // Kunci tab Akun Senior di Header
             if (tabPengguna) {
                 if (isPelatih) {
                     tabPengguna.classList.remove('hidden');
@@ -1254,7 +1230,6 @@
                 }
             }
 
-            // Kunci tombol-tombol reset kas & presensi
             [btnResetPengeluaran, btnResetAbsenDash, btnResetAbsenRekap].forEach(btn => {
                 if (btn) {
                     if (isPelatih) {
@@ -1265,6 +1240,12 @@
                         btn.style.display = 'none';
                     }
                 }
+            });
+            
+            // Juga menyembunyikan tombol delete (silang) per item pengeluaran
+            const hapusExpBtns = document.querySelectorAll('.hapus-expense-btn');
+            hapusExpBtns.forEach(b => {
+                b.style.display = isPelatih ? 'inline-block' : 'none';
             });
         }
         window.updateUserRoleBadge = applyRolePermissions;
@@ -1281,11 +1262,9 @@
         };
 
         function renderDashboard() {
-            // Active members count
             const activeMembers = state.members.filter(m => m.status === 'Aktif');
             document.getElementById('stat-total-anggota').innerText = activeMembers.length;
 
-            // Today attendance count
             const todaySession = state.attendance[todayStr] || {};
             let presentToday = 0;
             Object.values(todaySession).forEach(val => {
@@ -1294,7 +1273,7 @@
             document.getElementById('stat-hadir-today').innerText = presentToday;
             document.getElementById('stat-absensi-date').innerText = `Tanggal ${todayStr}`;
 
-            // Kas calculation
+            // Kas calculation (Logika Fix: Pengeluaran ditotal dengan Akumulasi)
             let totalKasIncome = 0;
             Object.values(state.kas).forEach(session => {
                 Object.values(session).forEach(item => {
@@ -1302,7 +1281,7 @@
                 });
             });
 
-            let totalExpense = 0;
+            let totalExpense = state.akumulasiPengeluaran || 0;
             state.expenses.forEach(exp => {
                 totalExpense += Number(exp.amount || 0);
             });
@@ -1311,7 +1290,6 @@
             document.getElementById('stat-total-kas').innerText = `Rp ${netKas.toLocaleString('id-ID')}`;
             document.getElementById('stat-total-pengeluaran').innerText = `Rp ${totalExpense.toLocaleString('id-ID')}`;
 
-            // Recent log rendering
             const logContainer = document.getElementById('dashboard-recent-log');
             logContainer.innerHTML = '';
             
@@ -1336,7 +1314,6 @@
                 });
             }
 
-            // Chart rendering
             const ctx = document.getElementById('dashboardChart');
             if (!ctx) return;
 
@@ -1377,7 +1354,6 @@
             });
         }
 
-        // Attendance functions
         window.loadAttendanceForDate = function() {
             let selectedDate = document.getElementById('absensi-date-input').value;
             if (!selectedDate) {
@@ -1454,7 +1430,6 @@
             renderDashboard();
         };
 
-        // Kas & Expense functions
         window.loadKasForDate = function() {
             let selectedDate = document.getElementById('kas-date-input').value;
             if (!selectedDate) {
@@ -1570,22 +1545,45 @@
                         <p class="font-bold text-slate-700">${item.desc}</p>
                         <p class="text-[10px] text-slate-400">${item.date}</p>
                     </div>
-                    <span class="font-bold text-rose-600">- Rp ${Number(item.amount).toLocaleString('id-ID')}</span>
+                    <div class="flex items-center gap-3">
+                        <span class="font-bold text-rose-600">- Rp ${Number(item.amount).toLocaleString('id-ID')}</span>
+                        <button onclick="deleteExpenseItem('${item.id}')" class="hapus-expense-btn text-slate-300 hover:text-rose-600 transition" title="Batalkan Pengeluaran Ini"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
                 `;
                 container.appendChild(div);
             });
+            applyRolePermissions();
         }
 
+        // FUNGSI BARU: Batalkan Pengeluaran per Item
+        window.deleteExpenseItem = function(id) {
+            if (currentUserRole !== 'Pelatih Utama') return;
+            if (confirm("Hapus catatan pengeluaran ini?\n\nSaldo kas bersih akan otomatis bertambah kembali (karena pengeluaran dibatalkan).")) {
+                state.expenses = state.expenses.filter(e => e.id !== id);
+                saveLocalData();
+                showToast("Pengeluaran berhasil dibatalkan.", "success");
+                renderExpenseHistory();
+                renderDashboard();
+            }
+        };
+
+        // FUNGSI DIPERBARUI: Bersihkan Layar namun tetap simpan ke akumulasi
         window.resetPengeluaran = function() {
             if (currentUserRole !== 'Pelatih Utama') {
                 showToast("Akses ditolak: Hanya Pelatih Utama yang dapat mereset pengeluaran.", "error");
                 return;
             }
 
-            if (confirm("Apakah Anda yakin ingin menghapus SEMUA riwayat pengeluaran?\n\nSaldo kas bersih akan otomatis bertambah kembali. Data yang dihapus tidak bisa dikembalikan.")) {
+            if (confirm("Bersihkan daftar riwayat pengeluaran dari layar?\n\n* Nominal pengeluaran akan tetap dihitung agar Saldo Kas Bersih tidak berubah.\n* Jika Anda hanya ingin membatalkan pengeluaran yang salah input, gunakan tanda silang (X) di samping nama pengeluaran.")) {
+                // Tambahkan semua total pengeluaran ke Akumulasi sebelum direset layarnya
+                let currentTotal = 0;
+                state.expenses.forEach(exp => currentTotal += Number(exp.amount || 0));
+                
+                state.akumulasiPengeluaran = (state.akumulasiPengeluaran || 0) + currentTotal;
                 state.expenses = [];
-                saveLocalData(); // Ini otomatis akan melakukan sync ke Supabase juga
-                showToast("Riwayat pengeluaran berhasil dikosongkan!", "success");
+                
+                saveLocalData(); // Sinkron ke Supabase otomatis
+                showToast("Riwayat pengeluaran berhasil dikosongkan dari layar!", "success");
                 renderExpenseHistory();
                 renderDashboard();
             }
@@ -1599,7 +1597,7 @@
 
             if (confirm("Yakin ingin menghapus SEMUA data Aktivitas & Presensi Kehadiran?\n\n* Pastikan Anda sudah Export CSV/Excel untuk rekap bulan ini sebelum menghapus.\n* Data yang dihapus tidak dapat dikembalikan!")) {
                 state.attendance = {};
-                saveLocalData(); // Sinkron ke Supabase otomatis
+                saveLocalData();
                 showToast("Data presensi dan aktivitas berhasil dikosongkan!", "success");
                 renderDashboard();
                 loadAttendanceForDate();
@@ -1607,7 +1605,6 @@
             }
         };
 
-        // Member management functions
         window.renderAnggotaTable = function() {
             const tbody = document.getElementById('anggota-table-body');
             if (!tbody) return;
@@ -1765,7 +1762,6 @@
             }
         };
 
-        // Materi & Kurikulum functions
         window.renderMateriSection = function() {
             const container = document.getElementById('materi-cards-container');
             if (!container) return;
@@ -1896,7 +1892,6 @@
             }
         };
 
-        // Rekap & Senior functions
         window.renderRekapTable = function() {
             const tbody = document.getElementById('rekap-table-body');
             if (!tbody) return;
@@ -2072,7 +2067,6 @@
             document.getElementById('exp-date').value = todayStr;
             toggleGateRoleInputs();
             
-            // Cek apakah user sudah login di 24 jam terakhir (Bypass halaman login otomatis)
             checkLoginSession(); 
         });
     </script>
