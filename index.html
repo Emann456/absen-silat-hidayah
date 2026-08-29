@@ -54,7 +54,7 @@
                 <div class="w-16 h-16 rounded-2xl bg-sky-500 mx-auto flex items-center justify-center font-bold text-2xl shadow-lg shadow-sky-500/30 mb-3">
                     <i class="fa-solid fa-users-rectangle text-white"></i>
                 </div>
-                <h2 class="text-2xl font-extrabold tracking-tight">E-Eskul Pro</h2>
+                <h2 class="text-2xl font-extrabold tracking-tight">E-Absen</h2>
                 <p class="text-xs text-slate-400 mt-1">Sistem Absensi & Kelola Kas Ekstrakulikuler</p>
             </div>
 
@@ -866,6 +866,9 @@
         let dashboardChartInstance = null;
         let supabaseClient = null;
         let currentMateriFilter = 'semua';
+        
+        // Kunci penyimpanan sesi login (24 jam)
+        const SESSION_KEY = 'eskul_login_session_v3';
 
         // Load data from LocalStorage
         function loadLocalData() {
@@ -1090,7 +1093,8 @@
                 if (pinEntered === state.coachPin) {
                     currentUserRole = 'Pelatih Utama';
                     currentSeniorData = null;
-                    enterApp();
+                    saveLoginSession();
+                    enterApp(true);
                 } else {
                     errBox.innerText = "PIN Pelatih Utama salah!";
                     errBox.classList.remove('hidden');
@@ -1101,7 +1105,8 @@
                 if (snObj && snObj.pin === pinEntered) {
                     currentUserRole = 'Senior';
                     currentSeniorData = snObj;
-                    enterApp();
+                    saveLoginSession();
+                    enterApp(true);
                 } else {
                     errBox.innerText = "PIN Senior yang Anda masukkan salah!";
                     errBox.classList.remove('hidden');
@@ -1109,7 +1114,45 @@
             }
         };
 
-        function enterApp() {
+        // Fungsi Simpan Sesi Login
+        function saveLoginSession() {
+            const sessionData = {
+                role: currentUserRole,
+                seniorData: currentSeniorData,
+                timestamp: new Date().getTime()
+            };
+            localStorage.setItem(SESSION_KEY, JSON.stringify(sessionData));
+        }
+
+        // Fungsi Cek Sesi Login Aktif (1 Hari / 24 Jam)
+        function checkLoginSession() {
+            const sessStr = localStorage.getItem(SESSION_KEY);
+            if (sessStr) {
+                try {
+                    const sess = JSON.parse(sessStr);
+                    const now = new Date().getTime();
+                    const oneDay = 24 * 60 * 60 * 1000; // 24 Jam dalam milidetik
+                    
+                    if (now - sess.timestamp < oneDay) {
+                        currentUserRole = sess.role;
+                        currentSeniorData = sess.seniorData;
+                        
+                        // Perbarui timestamp agar user tidak ter-logout jika masih aktif
+                        saveLoginSession(); 
+                        enterApp(false); 
+                        return true;
+                    } else {
+                        // Sesi expired, hapus dari memori
+                        localStorage.removeItem(SESSION_KEY);
+                    }
+                } catch(e) {
+                    console.warn("Session error", e);
+                }
+            }
+            return false;
+        }
+
+        function enterApp(showWelcomeMsg = true) {
             document.getElementById('login-gate').classList.add('hidden');
             const appContainer = document.getElementById('app-container');
             appContainer.classList.remove('hidden');
@@ -1117,10 +1160,14 @@
 
             updateUserRoleBadge();
             renderAllViews();
-            showToast(`Berhasil masuk sebagai ${currentUserRole === 'Pelatih Utama' ? 'Pelatih Utama' : currentSeniorData.name}!`, "success");
+            
+            if (showWelcomeMsg) {
+                showToast(`Berhasil masuk sebagai ${currentUserRole === 'Pelatih Utama' ? 'Pelatih Utama' : currentSeniorData.name}!`, "success");
+            }
         }
 
         window.logoutUser = function() {
+            localStorage.removeItem(SESSION_KEY); // Hapus sesi saat logout
             document.getElementById('app-container').classList.add('hidden');
             document.getElementById('app-container').classList.remove('flex');
             document.getElementById('gate-pin').value = '';
@@ -1915,6 +1962,9 @@
             loadLocalData();
             document.getElementById('exp-date').value = todayStr;
             toggleGateRoleInputs();
+            
+            // Cek apakah user sudah login di 24 jam terakhir (Bypass halaman login otomatis)
+            checkLoginSession(); 
         });
     </script>
 </body>
