@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abskas</title>
+    <title>Abskas Pro</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -55,7 +55,7 @@
                     <i class="fa-solid fa-users-rectangle text-white"></i>
                 </div>
                 <h2 class="text-2xl font-extrabold tracking-tight">E-Absen</h2>
-                <p class="text-xs text-slate-400 mt-1">Sistem Absensi & Kelola Kas</p>
+                <p class="text-xs text-slate-400 mt-1">Absensi & Kas Ekstrakulikuler</p>
             </div>
 
             <!-- Login Form -->
@@ -89,6 +89,7 @@
                 <div class="bg-slate-800/60 border border-slate-700/60 rounded-xl p-3 text-[11px] text-slate-400 flex items-start gap-2">
                     <i class="fa-solid fa-circle-info text-sky-400 mt-0.5"></i>
                     <div>
+                        <p id="hint-text-coach"><span class="font-bold text-sky-400">Pelatih baik hati:</span>
                         <p id="hint-text-senior" class="hidden"><span class="font-bold text-indigo-400">Default PIN Senior:</span> <span class="font-mono text-white">1122</span></p>
                     </div>
                 </div>
@@ -99,7 +100,7 @@
                 </div>
 
                 <button type="submit" class="w-full bg-sky-600 hover:bg-sky-500 text-white font-semibold py-3 rounded-xl transition shadow-lg shadow-sky-600/30 text-xs sm:text-sm flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-right-to-bracket"></i> Masuk
+                    <i class="fa-solid fa-right-to-bracket"></i> Masuk!
                 </button>
             </form>
         </div>
@@ -118,8 +119,8 @@
                             <i class="fa-solid fa-users-rectangle text-white"></i>
                         </div>
                         <div>
-                            <h1 class="font-bold text-lg leading-tight">Abskas</h1>
-                            <p class="text-xs text-slate-400">V1</p>
+                            <h1 class="font-bold text-lg leading-tight">Abskas Pro</h1>
+                            <p class="text-xs text-slate-400">Versi Beta</p>
                         </div>
                     </div>
 
@@ -147,10 +148,10 @@
             <div class="bg-slate-800 border-t border-slate-700/60 overflow-x-auto custom-scrollbar">
                 <div class="max-w-7xl mx-auto px-4 flex space-x-1 sm:space-x-2 py-2 text-sm whitespace-nowrap">
                     <button onclick="switchTab('dashboard')" id="tab-dashboard" class="tab-btn active px-4 py-2 rounded-lg font-medium text-xs sm:text-sm flex items-center gap-2 transition bg-sky-600 text-white">
-                        <i class="fa-solid fa-chart-pie"></i> Dashboard
+                        <i class="fa-solid fa-chart-pie"></i> Home
                     </button>
                     <button onclick="switchTab('absensi')" id="tab-absensi" class="tab-btn px-4 py-2 rounded-lg font-medium text-xs sm:text-sm text-slate-300 hover:bg-slate-700 hover:text-white flex items-center gap-2 transition">
-                        <i class="fa-solid fa-clipboard-user"></i> Input Absensi
+                        <i class="fa-solid fa-clipboard-user"></i> Absensi
                     </button>
                     <button onclick="switchTab('kas')" id="tab-kas" class="tab-btn px-4 py-2 rounded-lg font-medium text-xs sm:text-sm text-slate-300 hover:bg-slate-700 hover:text-white flex items-center gap-2 transition">
                         <i class="fa-solid fa-wallet"></i> Uang Kas
@@ -159,10 +160,10 @@
                         <i class="fa-solid fa-user-group"></i> Data Anggota
                     </button>
                     <button onclick="switchTab('rekap')" id="tab-rekap" class="tab-btn px-4 py-2 rounded-lg font-medium text-xs sm:text-sm text-slate-300 hover:bg-slate-700 hover:text-white flex items-center gap-2 transition">
-                        <i class="fa-solid fa-file-invoice"></i> Rekap & Laporan
+                        <i class="fa-solid fa-file-invoice"></i> Rekap Bulanan
                     </button>
                     <button onclick="switchTab('materi')" id="tab-materi" class="tab-btn px-4 py-2 rounded-lg font-medium text-xs sm:text-sm text-slate-300 hover:bg-slate-700 hover:text-white flex items-center gap-2 transition">
-                        <i class="fa-solid fa-book-bookmark"></i> Materi & Kurikulum
+                        <i class="fa-solid fa-book-bookmark"></i> Materi
                     </button>
                     <button onclick="switchTab('pengguna')" id="tab-pengguna" class="tab-btn px-4 py-2 rounded-lg font-medium text-xs sm:text-sm text-slate-300 hover:bg-slate-700 hover:text-white flex items-center gap-2 transition">
                         <i class="fa-solid fa-shield-halved"></i> Akun Senior
@@ -179,8 +180,8 @@
                 <!-- Welcome Banner -->
                 <div class="bg-gradient-to-r from-sky-600 to-indigo-700 rounded-2xl p-6 text-white shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                     <div>
-                        <h2 class="text-2xl font-bold">Selamat Datang, <span id="dash-user-name">Pelatih</span>!</h2>
-                        <p class="text-sky-100 text-sm mt-1">Kelola absensi siswa, materi kurikulum, dan kas ekstrakulikuler secara presisi.</p>
+                        <h2 class="text-2xl font-bold">Selamat Datang, <span id="dash-user-name"></span>!</h2>
+                        <p class="text-sky-100 text-sm mt-1">Reminder absen dan catat kas disini. <hr> langsung bisa dipantau Kak Fathur!</p>
                     </div>
                     <div class="flex items-center gap-3">
                         <button onclick="switchTab('absensi')" class="bg-white text-sky-700 font-semibold px-4 py-2.5 rounded-xl hover:bg-sky-50 transition shadow text-xs sm:text-sm flex items-center gap-2">
@@ -256,7 +257,12 @@
                     <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col">
                         <div class="flex items-center justify-between mb-3">
                             <h3 class="font-bold text-slate-800 text-sm">Aktivitas Terakhir</h3>
-                            <button onclick="switchTab('absensi')" class="text-xs text-sky-600 font-semibold hover:underline">Lihat Semua</button>
+                            <div class="flex items-center gap-2">
+                                <button id="btn-reset-absensi-dash" onclick="resetAbsensi()" class="text-[10px] bg-rose-50 text-rose-600 hover:bg-rose-100 font-semibold px-2 py-1 rounded border border-rose-200 transition flex items-center gap-1">
+                                    <i class="fa-solid fa-trash"></i> Reset
+                                </button>
+                                <button onclick="switchTab('absensi')" class="text-xs text-sky-600 font-semibold hover:underline">Lihat Semua</button>
+                            </div>
                         </div>
                         <div id="dashboard-recent-log" class="space-y-3 overflow-y-auto max-h-64 custom-scrollbar pr-1 flex-grow">
                             <!-- Populated dynamically -->
@@ -458,9 +464,9 @@
                 <div class="bg-gradient-to-r from-slate-900 via-sky-950 to-slate-900 rounded-2xl p-6 text-white shadow-xl space-y-4">
                     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                         <div>
-                            <span class="text-xs font-semibold text-sky-400 uppercase tracking-widest">Modul Pelatih</span>
-                            <h2 class="text-2xl font-bold mt-0.5">Target & Kurikulum Materi Eskul</h2>
-                            <p class="text-xs text-slate-300 mt-1">Pantau materi yang sudah diajarkan, dalam proses latihan, atau target yang belum dipelajari.</p>
+                            <span class="text-xs font-semibold text-sky-400 uppercase tracking-widest">Modul Latihan</span>
+                            <h2 class="text-2xl font-bold mt-0.5">Materi Latihan</h2>
+                            <p class="text-xs text-slate-300 mt-1"> Masukan materi yang sudah atau ingin dipelajari, sebagai perhatian untuk senior.</p>
                         </div>
                         <button onclick="openModalMateri()" class="self-start md:self-auto bg-sky-500 hover:bg-sky-400 text-white font-semibold px-4 py-2.5 rounded-xl transition shadow text-xs sm:text-sm flex items-center gap-2">
                             <i class="fa-solid fa-plus-circle"></i> Tambah Materi Baru
@@ -470,7 +476,7 @@
                     <!-- Progress Bar Component -->
                     <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700/60 space-y-2">
                         <div class="flex justify-between items-center text-xs">
-                            <span class="font-bold text-slate-200">Progres Ketuntasan Kurikulum</span>
+                            <span class="font-bold text-slate-200">Progres Ketuntasan Materi</span>
                             <span id="materi-progress-percent" class="font-bold text-sky-400">0% Tuntas</span>
                         </div>
                         <div class="w-full bg-slate-700 h-3 rounded-full overflow-hidden">
@@ -510,6 +516,9 @@
                             <p class="text-xs text-slate-500">Statistik lengkap persentase kehadiran dan total kas masuk per siswa.</p>
                         </div>
                         <div class="flex items-center gap-2">
+                            <button id="btn-reset-absensi-rekap" onclick="resetAbsensi()" class="bg-rose-50 hover:bg-rose-100 text-rose-600 font-semibold text-xs px-3.5 py-2.5 rounded-xl shadow-sm transition border border-rose-200 flex items-center gap-1.5">
+                                <i class="fa-solid fa-trash-can"></i> Reset Presensi
+                            </button>
                             <button onclick="exportToCSV()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow transition flex items-center gap-2">
                                 <i class="fa-solid fa-file-excel"></i> Export CSV / Excel
                             </button>
@@ -838,6 +847,13 @@
 
     <!-- Application Logic & Local Storage / Supabase Synchronization -->
     <script>
+        // ==============================================================================
+        // KREDENSIAL SUPABASE OTOMATIS (AUTO-CONNECT)
+        // Masukkan Anon Key Anda yang panjang di bawah ini agar otomatis Live Sync
+        // ==============================================================================
+        const AUTO_SUPABASE_URL = 'https://mktaltkkrmpmuddxvphz.supabase.co';
+        const AUTO_SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1rdGFsdGtrcm1wbXVkZHh2cGh6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc2NzE2NDEsImV4cCI6MjEwMzI0NzY0MX0.0cftehQBNpOacUk6aAJyGcw0Ra9zoBnqe4ainRzBi1w'; 
+
         const LOCAL_STORAGE_KEY = 'eskul_app_data_v3';
         const todayStr = new Date().toISOString().split('T')[0];
 
@@ -861,8 +877,8 @@
                 { id: 'mat-3', title: 'Strategi Counter Attack & Jump Serve', category: 'Lanjutan', status: 'Belum Dipelajari', date: '2026-09-05', notes: 'Dijadwalkan setelah fisik & tinggi lompatan memenuhi standar.' }
             ],
             coachPin: '123456',
-            supabaseUrl: '',
-            supabaseKey: ''
+            supabaseUrl: AUTO_SUPABASE_URL,
+            supabaseKey: AUTO_SUPABASE_KEY
         };
 
         let currentUserRole = 'Pelatih Utama';
@@ -881,6 +897,10 @@
                 if (stored) {
                     const parsed = JSON.parse(stored);
                     state = { ...state, ...parsed };
+                    
+                    // Paksa gunakan key otomatis jika di localstorage masih kosong/lama
+                    if (!state.supabaseUrl) state.supabaseUrl = AUTO_SUPABASE_URL;
+                    if (!state.supabaseKey) state.supabaseKey = AUTO_SUPABASE_KEY;
                 }
             } catch (e) {
                 console.warn("Could not load from localStorage:", e);
@@ -904,7 +924,14 @@
                     supabaseClient = window.supabase.createClient(state.supabaseUrl, state.supabaseKey);
                     updateDbStatusIndicator(true);
                     fetchFromSupabase();
-                    subscribeToSupabaseRealtime();
+                    
+                    // Mencegah SecurityError di Mode Canvas/Iframe (Pemblokiran WSS)
+                    // Jika website dibuka langsung (Vercel), Realtime akan otomatis ON.
+                    if (window.self === window.top) {
+                        subscribeToSupabaseRealtime();
+                    } else {
+                        console.warn("Berjalan di Mode Pratinjau Canvas: Live WebSocket dinonaktifkan untuk menghindari SecurityError.");
+                    }
                 } catch (e) {
                     console.error("Supabase init error:", e);
                     updateDbStatusIndicator(false);
@@ -1185,17 +1212,23 @@
             const dashName = document.getElementById('dash-user-name');
             const tabPengguna = document.getElementById('tab-pengguna');
             const btnResetPengeluaran = document.getElementById('btn-reset-pengeluaran');
+            const btnResetAbsenDash = document.getElementById('btn-reset-absensi-dash');
+            const btnResetAbsenRekap = document.getElementById('btn-reset-absensi-rekap');
 
             if (currentUserRole === 'Pelatih Utama') {
                 badgeRole.innerText = "Pelatih Utama";
                 dashName.innerText = "Pelatih";
                 tabPengguna.classList.remove('hidden');
                 if (btnResetPengeluaran) btnResetPengeluaran.classList.remove('hidden');
+                if (btnResetAbsenDash) btnResetAbsenDash.classList.remove('hidden');
+                if (btnResetAbsenRekap) btnResetAbsenRekap.classList.remove('hidden');
             } else {
                 badgeRole.innerText = `Senior: ${currentSeniorData ? currentSeniorData.name : ''}`;
                 dashName.innerText = currentSeniorData ? currentSeniorData.name : 'Senior';
                 tabPengguna.classList.add('hidden');
                 if (btnResetPengeluaran) btnResetPengeluaran.classList.add('hidden');
+                if (btnResetAbsenDash) btnResetAbsenDash.classList.add('hidden');
+                if (btnResetAbsenRekap) btnResetAbsenRekap.classList.add('hidden');
             }
         }
 
@@ -1517,6 +1550,22 @@
                 showToast("Riwayat pengeluaran berhasil dikosongkan!", "success");
                 renderExpenseHistory();
                 renderDashboard();
+            }
+        };
+
+        window.resetAbsensi = function() {
+            if (currentUserRole !== 'Pelatih Utama') {
+                showToast("Akses ditolak: Hanya Pelatih Utama yang dapat mereset data absensi.", "error");
+                return;
+            }
+
+            if (confirm("Yakin ingin menghapus SEMUA data Aktivitas & Presensi Kehadiran?\n\n* Pastikan Anda sudah Export CSV/Excel untuk rekap bulan ini sebelum menghapus.\n* Data yang dihapus tidak dapat dikembalikan!")) {
+                state.attendance = {};
+                saveLocalData(); // Sinkron ke Supabase otomatis
+                showToast("Data presensi dan aktivitas berhasil dikosongkan!", "success");
+                renderDashboard();
+                loadAttendanceForDate();
+                renderRekapTable();
             }
         };
 
