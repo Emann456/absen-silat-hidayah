@@ -55,7 +55,7 @@
                     <i class="fa-solid fa-users-rectangle text-white"></i>
                 </div>
                 <h2 class="text-2xl font-extrabold tracking-tight">E-Absen</h2>
-                <p class="text-xs text-slate-400 mt-1">Absensi & Kas Ekstrakulikuler</p>
+                <p class="text-xs text-slate-400 mt-1">Absensi dan Kelola Kas Ekstrakulikuler</p>
             </div>
 
             <!-- Login Form -->
@@ -89,9 +89,8 @@
                 <div class="bg-slate-800/60 border border-slate-700/60 rounded-xl p-3 text-[11px] text-slate-400 flex items-start gap-2">
                     <i class="fa-solid fa-circle-info text-sky-400 mt-0.5"></i>
                     <div>
-                        <p id="hint-text-coach"><span class="font-bold text-sky-400">Pelatih baik hati:</span>
-                        <p id="hint-text-senior" class="hidden"><span class="font-bold text-indigo-400">Default PIN Senior:</span> <span class="font-mono text-white">1122</span></p>
-                    </div>
+                        <p id="hint-text-coach"><span class="font-bold text-sky-400">Default PIN Pelatih:)</span>
+                        <p id="hint-text-senior" class="hidden"><span class="font-bold text-indigo-400">PIN Senior tanya ke pelatih!</span> 
                 </div>
 
                 <!-- Error Message -->
@@ -100,7 +99,7 @@
                 </div>
 
                 <button type="submit" class="w-full bg-sky-600 hover:bg-sky-500 text-white font-semibold py-3 rounded-xl transition shadow-lg shadow-sky-600/30 text-xs sm:text-sm flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-right-to-bracket"></i> Masuk!
+                    <i class="fa-solid fa-right-to-bracket"></i> Masuk
                 </button>
             </form>
         </div>
@@ -120,7 +119,7 @@
                         </div>
                         <div>
                             <h1 class="font-bold text-lg leading-tight">Abskas Pro</h1>
-                            <p class="text-xs text-slate-400">Versi Beta</p>
+                            <p class="text-xs text-slate-400">Beta</p>
                         </div>
                     </div>
 
@@ -148,7 +147,7 @@
             <div class="bg-slate-800 border-t border-slate-700/60 overflow-x-auto custom-scrollbar">
                 <div class="max-w-7xl mx-auto px-4 flex space-x-1 sm:space-x-2 py-2 text-sm whitespace-nowrap">
                     <button onclick="switchTab('dashboard')" id="tab-dashboard" class="tab-btn active px-4 py-2 rounded-lg font-medium text-xs sm:text-sm flex items-center gap-2 transition bg-sky-600 text-white">
-                        <i class="fa-solid fa-chart-pie"></i> Home
+                        <i class="fa-solid fa-chart-pie"></i> Dashboard
                     </button>
                     <button onclick="switchTab('absensi')" id="tab-absensi" class="tab-btn px-4 py-2 rounded-lg font-medium text-xs sm:text-sm text-slate-300 hover:bg-slate-700 hover:text-white flex items-center gap-2 transition">
                         <i class="fa-solid fa-clipboard-user"></i> Absensi
@@ -180,8 +179,8 @@
                 <!-- Welcome Banner -->
                 <div class="bg-gradient-to-r from-sky-600 to-indigo-700 rounded-2xl p-6 text-white shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                     <div>
-                        <h2 class="text-2xl font-bold">Selamat Datang, <span id="dash-user-name"></span>!</h2>
-                        <p class="text-sky-100 text-sm mt-1">Reminder absen dan catat kas disini. <hr> langsung bisa dipantau Kak Fathur!</p>
+                        <h2 class="text-2xl font-bold">Selamat Datang, <span id="dash-user-name">Pelatih</span>!</h2>
+                        <p class="text-sky-100 text-sm mt-1">Reminder absen dan kas, langsung dipantau kak Fathur</p>
                     </div>
                     <div class="flex items-center gap-3">
                         <button onclick="switchTab('absensi')" class="bg-white text-sky-700 font-semibold px-4 py-2.5 rounded-xl hover:bg-sky-50 transition shadow text-xs sm:text-sm flex items-center gap-2">
@@ -332,7 +331,7 @@
                             </div>
                             <div class="flex items-center gap-2">
                                 <span class="text-xs font-semibold text-slate-500">Tarif Default:</span>
-                                <input type="number" id="kas-rate-input" value="5000" class="w-24 text-right border border-slate-300 rounded-lg px-2 py-1 text-xs font-semibold focus:ring-2 focus:ring-sky-500">
+                                <input type="number" id="kas-rate-input" value="3000" class="w-24 text-right border border-slate-300 rounded-lg px-2 py-1 text-xs font-semibold focus:ring-2 focus:ring-sky-500">
                                 <span class="text-xs text-slate-500">/ Pertemuan</span>
                             </div>
                         </div>
@@ -382,7 +381,7 @@
                             <form id="form-pengeluaran" onsubmit="handleTambahPengeluaran(event)" class="space-y-3">
                                 <div>
                                     <label class="block text-xs font-semibold text-slate-600 mb-1">Keterangan / Keperluan</label>
-                                    <input type="text" id="exp-desc" placeholder="Contoh: Beli Air Mineral / Shuttlecock" required class="w-full border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-sky-500 outline-none">
+                                    <input type="text" id="exp-desc" placeholder="Contoh: Beli Air Mineral Tanding" required class="w-full border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-sky-500 outline-none">
                                 </div>
                                 <div>
                                     <label class="block text-xs font-semibold text-slate-600 mb-1">Jumlah Nominal (Rp)</label>
@@ -419,8 +418,8 @@
                 <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-100">
                         <div>
-                            <h2 class="text-xl font-bold text-slate-800">Manajemen Anggota Eskul</h2>
-                            <p class="text-xs text-slate-500 mt-0.5">Daftar seluruh siswa, statistik fisik (BB/TB), dan keahlian.</p>
+                            <h2 class="text-xl font-bold text-slate-800"> Anggota Eskul</h2>
+                            <p class="text-xs text-slate-500 mt-0.5">Daftar seluruh anggota, statistik fisik (BB/TB), dan keahlian.</p>
                         </div>
                         <button onclick="openModalMember()" class="bg-sky-600 hover:bg-sky-700 text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow transition flex items-center gap-2">
                             <i class="fa-solid fa-user-plus"></i> Tambah Anggota Baru
@@ -464,9 +463,9 @@
                 <div class="bg-gradient-to-r from-slate-900 via-sky-950 to-slate-900 rounded-2xl p-6 text-white shadow-xl space-y-4">
                     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                         <div>
-                            <span class="text-xs font-semibold text-sky-400 uppercase tracking-widest">Modul Latihan</span>
+                            <span class="text-xs font-semibold text-sky-400 uppercase tracking-widest">Modul Pelatih</span>
                             <h2 class="text-2xl font-bold mt-0.5">Materi Latihan</h2>
-                            <p class="text-xs text-slate-300 mt-1"> Masukan materi yang sudah atau ingin dipelajari, sebagai perhatian untuk senior.</p>
+                            <p class="text-xs text-slate-300 mt-1">Masukan Materi setiap latihan, sebagai reminder senior!</p>
                         </div>
                         <button onclick="openModalMateri()" class="self-start md:self-auto bg-sky-500 hover:bg-sky-400 text-white font-semibold px-4 py-2.5 rounded-xl transition shadow text-xs sm:text-sm flex items-center gap-2">
                             <i class="fa-solid fa-plus-circle"></i> Tambah Materi Baru
@@ -476,7 +475,7 @@
                     <!-- Progress Bar Component -->
                     <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700/60 space-y-2">
                         <div class="flex justify-between items-center text-xs">
-                            <span class="font-bold text-slate-200">Progres Ketuntasan Materi</span>
+                            <span class="font-bold text-slate-200">Progres Materi</span>
                             <span id="materi-progress-percent" class="font-bold text-sky-400">0% Tuntas</span>
                         </div>
                         <div class="w-full bg-slate-700 h-3 rounded-full overflow-hidden">
@@ -512,8 +511,8 @@
                 <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-6">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
                         <div>
-                            <h2 class="text-xl font-bold text-slate-800">Rekap & Laporan Kehadiran</h2>
-                            <p class="text-xs text-slate-500">Statistik lengkap persentase kehadiran dan total kas masuk per siswa.</p>
+                            <h2 class="text-xl font-bold text-slate-800">Rekap Absenssi</h2>
+                            <p class="text-xs text-slate-500">persentase kehadiran dan total kas masuk per siswa. Rekap setiap bulan dan catat ke buku absen!</p>
                         </div>
                         <div class="flex items-center gap-2">
                             <button id="btn-reset-absensi-rekap" onclick="resetAbsensi()" class="bg-rose-50 hover:bg-rose-100 text-rose-600 font-semibold text-xs px-3.5 py-2.5 rounded-xl shadow-sm transition border border-rose-200 flex items-center gap-1.5">
@@ -604,11 +603,11 @@
                 <input type="hidden" id="member-id">
                 <div>
                     <label class="block text-xs font-semibold text-slate-600 mb-1">Nama Lengkap Siswa</label>
-                    <input type="text" id="member-name" required placeholder="Contoh: Muhammad Rizky" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-sky-500 outline-none">
+                    <input type="text" id="member-name" required placeholder="Contoh: Assyam Balqis" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-sky-500 outline-none">
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-slate-600 mb-1">Kelas / Tingkat</label>
-                    <input type="text" id="member-class" required placeholder="Contoh: X IPA 2 / XI IPS 1" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-sky-500 outline-none">
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Kelas Sekolah & Tanding</label>
+                    <input type="text" id="member-class" required placeholder="Contoh: 7,3 (kelas b)" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-sky-500 outline-none">
                 </div>
 
                 <!-- Physical Stats Inputs -->
@@ -624,8 +623,8 @@
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-slate-600 mb-1">Skill yang Dikuasai / Keahlian</label>
-                    <input type="text" id="member-skills" placeholder="Contoh: Smash Power, Servis Presisi, Defense" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-sky-500 outline-none">
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Keahlian utama</label>
+                    <input type="text" id="member-skills" placeholder="Contoh: Speed, Akurasi Serangan" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-sky-500 outline-none">
                     <p class="text-[10px] text-slate-400 mt-1">Pisahkan skill dengan koma.</p>
                 </div>
 
@@ -752,7 +751,7 @@
 
                 <div>
                     <label class="block text-xs font-semibold text-slate-600 mb-1">Catatan Evaluasi Pelatih</label>
-                    <textarea id="materi-notes" rows="3" placeholder="Contoh: Fokus pada posisi kaki & kuda-kuda saat menerima bola fast ball..." class="w-full border border-slate-300 rounded-xl p-3 text-xs focus:ring-2 focus:ring-sky-500 outline-none custom-scrollbar"></textarea>
+                    <textarea id="materi-notes" rows="3" placeholder="Contoh: Fokus pada posisi kaki & kuda-kuda " class="w-full border border-slate-300 rounded-xl p-3 text-xs focus:ring-2 focus:ring-sky-500 outline-none custom-scrollbar"></textarea>
                 </div>
 
                 <div class="flex justify-end gap-2 pt-2">
@@ -1051,6 +1050,11 @@
 
         // Navigation & Role Handling
         window.switchTab = function(tabName) {
+            // Guard: Cegah akun non-pelatih membuka tab kelola akun senior
+            if (currentUserRole !== 'Pelatih Utama' && tabName === 'pengguna') {
+                tabName = 'dashboard';
+            }
+
             const tabs = ['dashboard', 'absensi', 'kas', 'anggota', 'rekap', 'materi', 'pengguna'];
             tabs.forEach(t => {
                 const view = document.getElementById(`view-${t}`);
@@ -1073,6 +1077,9 @@
             if (tabName === 'rekap') renderRekapTable();
             if (tabName === 'materi') renderMateriSection();
             if (tabName === 'pengguna') renderSeniorTable();
+
+            // Terapkan proteksi hak akses setelah class tombol diperbarui
+            applyRolePermissions();
         };
 
         window.toggleGateRoleInputs = function() {
@@ -1207,7 +1214,8 @@
             toggleGateRoleInputs();
         };
 
-        function updateUserRoleBadge() {
+        function applyRolePermissions() {
+            const isPelatih = (currentUserRole === 'Pelatih Utama');
             const badgeRole = document.getElementById('current-user-role');
             const dashName = document.getElementById('dash-user-name');
             const tabPengguna = document.getElementById('tab-pengguna');
@@ -1215,22 +1223,38 @@
             const btnResetAbsenDash = document.getElementById('btn-reset-absensi-dash');
             const btnResetAbsenRekap = document.getElementById('btn-reset-absensi-rekap');
 
-            if (currentUserRole === 'Pelatih Utama') {
-                badgeRole.innerText = "Pelatih Utama";
-                dashName.innerText = "Pelatih";
-                tabPengguna.classList.remove('hidden');
-                if (btnResetPengeluaran) btnResetPengeluaran.classList.remove('hidden');
-                if (btnResetAbsenDash) btnResetAbsenDash.classList.remove('hidden');
-                if (btnResetAbsenRekap) btnResetAbsenRekap.classList.remove('hidden');
-            } else {
-                badgeRole.innerText = `Senior: ${currentSeniorData ? currentSeniorData.name : ''}`;
-                dashName.innerText = currentSeniorData ? currentSeniorData.name : 'Senior';
-                tabPengguna.classList.add('hidden');
-                if (btnResetPengeluaran) btnResetPengeluaran.classList.add('hidden');
-                if (btnResetAbsenDash) btnResetAbsenDash.classList.add('hidden');
-                if (btnResetAbsenRekap) btnResetAbsenRekap.classList.add('hidden');
+            if (badgeRole) {
+                badgeRole.innerText = isPelatih ? "Pelatih Utama" : `Senior: ${currentSeniorData ? currentSeniorData.name : ''}`;
             }
+            if (dashName) {
+                dashName.innerText = isPelatih ? "Pelatih" : (currentSeniorData ? currentSeniorData.name : 'Senior');
+            }
+
+            // Kunci tab Akun Senior di Header
+            if (tabPengguna) {
+                if (isPelatih) {
+                    tabPengguna.classList.remove('hidden');
+                    tabPengguna.style.display = '';
+                } else {
+                    tabPengguna.classList.add('hidden');
+                    tabPengguna.style.display = 'none';
+                }
+            }
+
+            // Kunci tombol-tombol reset kas & presensi
+            [btnResetPengeluaran, btnResetAbsenDash, btnResetAbsenRekap].forEach(btn => {
+                if (btn) {
+                    if (isPelatih) {
+                        btn.classList.remove('hidden');
+                        btn.style.display = '';
+                    } else {
+                        btn.classList.add('hidden');
+                        btn.style.display = 'none';
+                    }
+                }
+            });
         }
+        window.updateUserRoleBadge = applyRolePermissions;
 
         window.renderAllViews = function() {
             renderDashboard();
@@ -1240,6 +1264,7 @@
             renderRekapTable();
             renderMateriSection();
             renderSeniorTable();
+            applyRolePermissions();
         };
 
         function renderDashboard() {
