@@ -1262,9 +1262,11 @@
         };
 
         function renderDashboard() {
+            // Active members count
             const activeMembers = state.members.filter(m => m.status === 'Aktif');
             document.getElementById('stat-total-anggota').innerText = activeMembers.length;
 
+            // Today attendance count
             const todaySession = state.attendance[todayStr] || {};
             let presentToday = 0;
             Object.values(todaySession).forEach(val => {
@@ -1273,7 +1275,7 @@
             document.getElementById('stat-hadir-today').innerText = presentToday;
             document.getElementById('stat-absensi-date').innerText = `Tanggal ${todayStr}`;
 
-            // Kas calculation (Logika Fix: Pengeluaran ditotal dengan Akumulasi)
+            // Kas calculation
             let totalKasIncome = 0;
             Object.values(state.kas).forEach(session => {
                 Object.values(session).forEach(item => {
@@ -1281,7 +1283,8 @@
                 });
             });
 
-            let totalExpense = state.akumulasiPengeluaran || 0;
+            // FIX BUG: Ambil juga nilai akumulasi dari Supabase (jika ada) agar bisa dihapus saat di-reset
+            let totalExpense = Number(state.akumulasiPengeluaran) || 0;
             state.expenses.forEach(exp => {
                 totalExpense += Number(exp.amount || 0);
             });
@@ -1290,10 +1293,7 @@
             document.getElementById('stat-total-kas').innerText = `Rp ${netKas.toLocaleString('id-ID')}`;
             document.getElementById('stat-total-pengeluaran').innerText = `Rp ${totalExpense.toLocaleString('id-ID')}`;
 
-            const logContainer = document.getElementById('dashboard-recent-log');
-            logContainer.innerHTML = '';
-            
-            const attendanceDates = Object.keys(state.attendance).sort().reverse();
+            // Recent log rendering
             if (attendanceDates.length === 0) {
                 logContainer.innerHTML = `<p class="text-xs text-slate-400 italic">Belum ada aktivitas presensi.</p>`;
             } else {
@@ -1574,16 +1574,12 @@
                 return;
             }
 
-            if (confirm("Bersihkan daftar riwayat pengeluaran dari layar?\n\n* Nominal pengeluaran akan tetap dihitung agar Saldo Kas Bersih tidak berubah.\n* Jika Anda hanya ingin membatalkan pengeluaran yang salah input, gunakan tanda silang (X) di samping nama pengeluaran.")) {
-                // Tambahkan semua total pengeluaran ke Akumulasi sebelum direset layarnya
-                let currentTotal = 0;
-                state.expenses.forEach(exp => currentTotal += Number(exp.amount || 0));
-                
-                state.akumulasiPengeluaran = (state.akumulasiPengeluaran || 0) + currentTotal;
+            if (confirm("Apakah Anda yakin ingin menghapus SEMUA riwayat pengeluaran?\n\nTotal pengeluaran di Dashboard akan kembali 0 dan Saldo Kas Bersih akan bertambah kembali.")) {
                 state.expenses = [];
+                state.akumulasiPengeluaran = 0; // FIX BUG: Wajib di-nol-kan agar Dashboard ikut mereset ke Rp 0
                 
-                saveLocalData(); // Sinkron ke Supabase otomatis
-                showToast("Riwayat pengeluaran berhasil dikosongkan dari layar!", "success");
+                saveLocalData(); // Ini otomatis akan melakukan sync ke Supabase
+                showToast("Riwayat pengeluaran berhasil dikosongkan!", "success");
                 renderExpenseHistory();
                 renderDashboard();
             }
