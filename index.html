@@ -101,7 +101,7 @@
                 <div class="bg-slate-800/60 border border-slate-700/60 rounded-xl p-3 text-[11px] text-slate-400 flex items-start gap-2">
                     <i class="fa-solid fa-circle-info text-sky-400 mt-0.5"></i>
                     <div>
-                        <p id="hint-text-coach"><span class="font-bold text-sky-400">Default PIN Pelatih:)</span></p>
+                        <p id="hint-text-coach"><span class="font-bold text-sky-400">Pelatih baik hati:)</span></p>
                         <p id="hint-text-senior" class="hidden"><span class="font-bold text-indigo-400">PIN Senior tanya ke pelatih!</span></p>
                     </div>
                 </div>
@@ -159,13 +159,14 @@
             <!-- Tab Bar Mobile & Desktop -->
             <div class="bg-slate-800 border-t border-slate-700/60 overflow-x-auto custom-scrollbar">
                 <div class="max-w-7xl mx-auto px-4 flex space-x-1 sm:space-x-2 py-2 text-sm whitespace-nowrap">
-                    <button onclick="switchTab('dashboard')" id="tab-dashboard" class="tab-btn active px-4 py-2 rounded-lg font-medium text-xs sm:text-sm flex items-center gap-2 transition bg-sky-600 text-white">
+                    <button onclick="switchTab('dashboard')" id="tab-dashboard" class="tab-btn active px-4 py-2 rounded-lg font-medium text-xs sm:text-sm flex items-center gap-2 transition bg-sky-600 text-white shadow">
                         <i class="fa-solid fa-chart-pie"></i> Home
                     </button>
                     <button onclick="switchTab('absensi')" id="tab-absensi" class="tab-btn px-4 py-2 rounded-lg font-medium text-xs sm:text-sm text-slate-300 hover:bg-slate-700 hover:text-white flex items-center gap-2 transition">
                         <i class="fa-solid fa-clipboard-user"></i> Absensi
                     </button>
-                    <button onclick="switchTab('kas')" id="tab-kas" class="tab-btn px-4 py-2 rounded-lg font-medium text-xs sm:text-sm text-slate-300 hover:bg-slate-700 hover:text-white flex items-center gap-2 transition">
+                    <!-- UANG KAS TAB DISEMBUNYIKAN UNTUK SEMENTARA -->
+                    <button onclick="switchTab('kas')" id="tab-kas" class="hidden tab-btn px-4 py-2 rounded-lg font-medium text-xs sm:text-sm text-slate-300 hover:bg-slate-700 hover:text-white flex items-center gap-2 transition">
                         <i class="fa-solid fa-wallet"></i> Uang Kas
                     </button>
                     <button onclick="switchTab('anggota')" id="tab-anggota" class="tab-btn px-4 py-2 rounded-lg font-medium text-xs sm:text-sm text-slate-300 hover:bg-slate-700 hover:text-white flex items-center gap-2 transition">
@@ -199,14 +200,15 @@
                         <button onclick="switchTab('absensi')" class="bg-white text-sky-700 font-semibold px-4 py-2.5 rounded-xl hover:bg-sky-50 transition shadow text-xs sm:text-sm flex items-center gap-2">
                             <i class="fa-solid fa-plus-circle"></i> Absen Hari Ini
                         </button>
-                        <button onclick="switchTab('kas')" class="bg-sky-500/40 hover:bg-sky-500/60 border border-white/20 text-white font-medium px-4 py-2.5 rounded-xl transition text-xs sm:text-sm flex items-center gap-2">
+                        <!-- TOMBOL CATAT KAS DISEMBUNYIKAN UNTUK SEMENTARA -->
+                        <button onclick="switchTab('kas')" class="hidden bg-sky-500/40 hover:bg-sky-500/60 border border-white/20 text-white font-medium px-4 py-2.5 rounded-xl transition text-xs sm:text-sm flex items-center gap-2">
                             <i class="fa-solid fa-hand-holding-dollar"></i> Catat Kas
                         </button>
                     </div>
                 </div>
 
-                <!-- Stats Grid -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Stats Grid (Kas stats disembunyikan sementara) -->
+                <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
                     <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition">
                         <div class="flex items-center justify-between">
                             <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Anggota</span>
@@ -229,7 +231,8 @@
                         <span id="stat-absensi-date" class="text-xs text-emerald-600 font-medium mt-1 block">Hari ini</span>
                     </div>
 
-                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <!-- KARTU KAS BERSIH DISEMBUNYIKAN -->
+                    <div class="hidden bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition">
                         <div class="flex items-center justify-between">
                             <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Kas Bersih</span>
                             <div class="w-9 h-9 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center">
@@ -240,7 +243,8 @@
                         <span class="text-xs text-sky-600 font-medium mt-1 block">Saldo Saat Ini</span>
                     </div>
 
-                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <!-- KARTU PENGELUARAN DISEMBUNYIKAN -->
+                    <div class="hidden bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition">
                         <div class="flex items-center justify-between">
                             <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Pengeluaran</span>
                             <div class="w-9 h-9 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center">
@@ -257,7 +261,7 @@
                     <!-- Chart Summary -->
                     <div class="lg:col-span-2 bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
                         <div class="flex items-center justify-between mb-4">
-                            <h3 class="font-bold text-slate-800 text-sm sm:text-base">Grafik Kehadiran & Kas</h3>
+                            <h3 class="font-bold text-slate-800 text-sm sm:text-base">Grafik Kehadiran</h3>
                             <span class="text-xs bg-slate-100 text-slate-600 font-medium px-2.5 py-1 rounded-md">Bulan Ini</span>
                         </div>
                         <div class="relative h-64 w-full">
@@ -303,8 +307,24 @@
                         </div>
                     </div>
 
+                    <!-- Search & Filter Bar Mobile-Friendly -->
+                    <div class="mt-4 flex flex-col sm:flex-row items-center justify-between gap-3 pb-3 border-b border-slate-50">
+                        <!-- Pencarian Nama -->
+                        <div class="relative w-full sm:w-1/2">
+                            <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-400 text-xs"></i>
+                            <input type="text" id="search-absensi" onkeyup="filterAbsensiTable()" placeholder="Ketik nama siswa..." class="w-full border border-slate-300 rounded-xl pl-9 pr-3 py-2 text-xs focus:ring-2 focus:ring-sky-500 outline-none">
+                        </div>
+                        <!-- Filter Kelas Dinamis -->
+                        <div class="w-full sm:w-1/3">
+                            <select id="filter-class-absensi" onchange="filterAbsensiTable()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-medium text-slate-700 focus:ring-2 focus:ring-sky-500 outline-none">
+                                <option value="Semua">Semua Kelas</option>
+                                <!-- Populated dynamically -->
+                            </select>
+                        </div>
+                    </div>
+
                     <!-- Student Attendance List -->
-                    <div class="mt-6 overflow-x-auto">
+                    <div class="mt-4 overflow-x-auto">
                         <table class="w-full text-left text-sm whitespace-nowrap">
                             <thead class="bg-slate-50 text-slate-600 text-xs font-semibold uppercase tracking-wider rounded-lg">
                                 <tr>
@@ -331,7 +351,7 @@
                 </div>
             </section>
 
-            <!-- UANG KAS VIEW -->
+            <!-- UANG KAS VIEW (Kode tetap dijaga jika nanti diaktifkan kembali) -->
             <section id="view-kas" class="hidden space-y-6">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
@@ -547,8 +567,9 @@
                                     <th class="p-3.5 text-center">Total Hadir</th>
                                     <th class="p-3.5 text-center">Izin / Sakit</th>
                                     <th class="p-3.5 text-center">Alpa</th>
-                                    <th class="p-3.5 text-center">% Kehadiran</th>
-                                    <th class="p-3.5 text-right rounded-r-xl">Total Kas Terbayar</th>
+                                    <th class="p-3.5 text-center rounded-r-xl">% Kehadiran</th>
+                                    <!-- Sembunyikan Kolom Kas -->
+                                    <th class="hidden p-3.5 text-right rounded-r-xl">Total Kas Terbayar</th>
                                 </tr>
                             </thead>
                             <tbody id="rekap-table-body" class="divide-y divide-slate-100">
@@ -870,13 +891,24 @@
 
         // Core state data structure
         let state = {
-            members: [],
+            members: [
+                { id: 'm-1', name: 'Ahmad Fauzi', class: 'X IPA 1', phone: '08123456781', status: 'Aktif', weight: 65, height: 172, skills: 'Smash Power, Servis Atas' },
+                { id: 'm-2', name: 'Bhakti Utama', class: 'X IPS 2', phone: '08123456782', status: 'Aktif', weight: 58, height: 168, skills: 'Defense, Passing Bawah' },
+                { id: 'm-3', name: 'Citra Kirana', class: 'XI IPA 3', phone: '08123456783', status: 'Aktif', weight: 52, height: 160, skills: 'Setting, Agility' },
+                { id: 'm-4', name: 'Dewi Lestari', class: 'XI IPS 1', phone: '08123456784', status: 'Aktif', weight: 55, height: 165, skills: 'Blocking, Servis Presisi' }
+            ],
             attendance: {},
             kas: {},
             expenses: [],
-            akumulasiPengeluaran: 0, // <-- FIX: Logika pengeluaran yang direset agar saldo tak kacau
-            seniors: [],
-            materi: [],
+            akumulasiPengeluaran: 0,
+            seniors: [
+                { id: 'sn-1', name: 'Senior Dimas', username: 'dimas', pin: '1122' }
+            ],
+            materi: [
+                { id: 'mat-1', title: 'Teknik Dasar Passing & Control', category: 'Dasar', status: 'Sudah Dipelajari', date: '2026-08-10', notes: 'Semua anggota aktif sudah lulus evaluasi passing 10x tanpa jatuh.' },
+                { id: 'mat-2', title: 'Formasi Pertahanan 3-3 & Transisi', category: 'Menengah', status: 'Dalam Proses', date: '2026-08-20', notes: 'Perlu pengulangan untuk koordinasi rotasi posisi.' },
+                { id: 'mat-3', title: 'Strategi Counter Attack & Jump Serve', category: 'Lanjutan', status: 'Belum Dipelajari', date: '2026-09-05', notes: 'Dijadwalkan setelah fisik & tinggi lompatan memenuhi standar.' }
+            ],
             coachPin: '123456',
             supabaseUrl: AUTO_SUPABASE_URL,
             supabaseKey: AUTO_SUPABASE_KEY
@@ -927,6 +959,8 @@
                     
                     if (window.self === window.top) {
                         subscribeToSupabaseRealtime();
+                    } else {
+                        console.warn("Berjalan di Mode Pratinjau Canvas: Live WebSocket dinonaktifkan.");
                     }
                 } catch (e) {
                     console.error("Supabase init error:", e);
@@ -1050,7 +1084,8 @@
                 tabName = 'dashboard';
             }
 
-            const tabs = ['dashboard', 'absensi', 'kas', 'anggota', 'rekap', 'materi', 'pengguna'];
+            // 'kas' dihapus dari loop agar class hidden miliknya tidak tereset secara otomatis
+            const tabs = ['dashboard', 'absensi', 'anggota', 'rekap', 'materi', 'pengguna'];
             tabs.forEach(t => {
                 const view = document.getElementById(`view-${t}`);
                 const btn = document.getElementById(`tab-${t}`);
@@ -1161,7 +1196,7 @@
                 try {
                     const sess = JSON.parse(sessStr);
                     const now = new Date().getTime();
-                    const oneDay = 24 * 60 * 60 * 1000;
+                    const oneDay = 24 * 60 * 60 * 1000; 
                     
                     if (now - sess.timestamp < oneDay) {
                         currentUserRole = sess.role;
@@ -1241,12 +1276,6 @@
                     }
                 }
             });
-            
-            // Juga menyembunyikan tombol delete (silang) per item pengeluaran
-            const hapusExpBtns = document.querySelectorAll('.hapus-expense-btn');
-            hapusExpBtns.forEach(b => {
-                b.style.display = isPelatih ? 'inline-block' : 'none';
-            });
         }
         window.updateUserRoleBadge = applyRolePermissions;
 
@@ -1262,11 +1291,9 @@
         };
 
         function renderDashboard() {
-            // Active members count
             const activeMembers = state.members.filter(m => m.status === 'Aktif');
             document.getElementById('stat-total-anggota').innerText = activeMembers.length;
 
-            // Today attendance count
             const todaySession = state.attendance[todayStr] || {};
             let presentToday = 0;
             Object.values(todaySession).forEach(val => {
@@ -1275,7 +1302,6 @@
             document.getElementById('stat-hadir-today').innerText = presentToday;
             document.getElementById('stat-absensi-date').innerText = `Tanggal ${todayStr}`;
 
-            // Kas calculation
             let totalKasIncome = 0;
             Object.values(state.kas).forEach(session => {
                 Object.values(session).forEach(item => {
@@ -1283,7 +1309,6 @@
                 });
             });
 
-            // FIX BUG: Ambil juga nilai akumulasi dari Supabase (jika ada) agar bisa dihapus saat di-reset
             let totalExpense = Number(state.akumulasiPengeluaran) || 0;
             state.expenses.forEach(exp => {
                 totalExpense += Number(exp.amount || 0);
@@ -1293,7 +1318,11 @@
             document.getElementById('stat-total-kas').innerText = `Rp ${netKas.toLocaleString('id-ID')}`;
             document.getElementById('stat-total-pengeluaran').innerText = `Rp ${totalExpense.toLocaleString('id-ID')}`;
 
-            // Recent log rendering
+            const logContainer = document.getElementById('dashboard-recent-log');
+            if (!logContainer) return;
+            logContainer.innerHTML = '';
+            
+            const attendanceDates = Object.keys(state.attendance).sort().reverse();
             if (attendanceDates.length === 0) {
                 logContainer.innerHTML = `<p class="text-xs text-slate-400 italic">Belum ada aktivitas presensi.</p>`;
             } else {
@@ -1329,29 +1358,31 @@
                 return count;
             }) : [0, 0, 0];
 
-            dashboardChartInstance = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Jumlah Hadir',
-                        data: chartData,
-                        borderColor: '#0284c7',
-                        backgroundColor: 'rgba(2, 132, 199, 0.1)',
-                        tension: 0.3,
-                        fill: true,
-                        pointBackgroundColor: '#0284c7'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
-                    scales: {
-                        y: { beginAtZero: true, ticks: { stepSize: 1 } }
+            if (typeof Chart !== 'undefined') {
+                dashboardChartInstance = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Jumlah Hadir',
+                            data: chartData,
+                            borderColor: '#0284c7',
+                            backgroundColor: 'rgba(2, 132, 199, 0.1)',
+                            tension: 0.3,
+                            fill: true,
+                            pointBackgroundColor: '#0284c7'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            y: { beginAtZero: true, ticks: { stepSize: 1 } }
+                        }
                     }
-                }
-            });
+                });
+            }
         }
 
         window.loadAttendanceForDate = function() {
@@ -1373,21 +1404,39 @@
                 return;
             }
 
+            // Membangun Dropdown Filter Kelas secara dinamis
+            const classFilter = document.getElementById('filter-class-absensi');
+            const currentFilterVal = classFilter?.value || 'Semua';
+            const uniqueClasses = [...new Set(activeMembers.map(m => m.class))].sort();
+            
+            if (classFilter) {
+                let classOptions = `<option value="Semua">Semua Kelas</option>`;
+                uniqueClasses.forEach(c => {
+                    classOptions += `<option value="${c}" ${currentFilterVal === c ? 'selected' : ''}>Kelas ${c}</option>`;
+                });
+                classFilter.innerHTML = classOptions;
+            }
+
             activeMembers.forEach((m, idx) => {
                 const record = currentSession[m.id] || { status: 'Hadir', note: '' };
+                const st = record.status;
                 const tr = document.createElement('tr');
-                tr.className = "hover:bg-slate-50 transition";
+                tr.className = "hover:bg-slate-50 transition absensi-row";
+                tr.setAttribute('data-name', m.name);
+                tr.setAttribute('data-class', m.class);
+                
                 tr.innerHTML = `
                     <td class="p-3.5 text-xs text-slate-500 font-medium">${idx + 1}</td>
                     <td class="p-3.5 font-bold text-slate-800 text-xs">${m.name}</td>
                     <td class="p-3.5 text-xs text-slate-600">${m.class}</td>
                     <td class="p-3.5 text-center">
-                        <select id="att-status-${m.id}" class="bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs font-semibold focus:ring-2 focus:ring-sky-500 outline-none">
-                            <option value="Hadir" ${record.status === 'Hadir' ? 'selected' : ''}>Hadir</option>
-                            <option value="Izin" ${record.status === 'Izin' ? 'selected' : ''}>Izin</option>
-                            <option value="Sakit" ${record.status === 'Sakit' ? 'selected' : ''}>Sakit</option>
-                            <option value="Alpa" ${record.status === 'Alpa' ? 'selected' : ''}>Alpa</option>
-                        </select>
+                        <div class="flex items-center justify-center gap-1 sm:gap-1.5">
+                            <button type="button" onclick="changeAttStatus('${m.id}', 'Hadir')" id="btn-H-${m.id}" class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg font-bold text-[10px] sm:text-xs transition ${st === 'Hadir' ? 'bg-emerald-500 text-white shadow-md' : 'bg-slate-100 text-slate-400 hover:bg-slate-200'}">H</button>
+                            <button type="button" onclick="changeAttStatus('${m.id}', 'Izin')" id="btn-I-${m.id}" class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg font-bold text-[10px] sm:text-xs transition ${st === 'Izin' ? 'bg-amber-500 text-white shadow-md' : 'bg-slate-100 text-slate-400 hover:bg-slate-200'}">I</button>
+                            <button type="button" onclick="changeAttStatus('${m.id}', 'Sakit')" id="btn-S-${m.id}" class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg font-bold text-[10px] sm:text-xs transition ${st === 'Sakit' ? 'bg-amber-500 text-white shadow-md' : 'bg-slate-100 text-slate-400 hover:bg-slate-200'}">S</button>
+                            <button type="button" onclick="changeAttStatus('${m.id}', 'Alpa')" id="btn-A-${m.id}" class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg font-bold text-[10px] sm:text-xs transition ${st === 'Alpa' ? 'bg-rose-500 text-white shadow-md' : 'bg-slate-100 text-slate-400 hover:bg-slate-200'}">A</button>
+                            <input type="hidden" id="att-status-${m.id}" value="${st}">
+                        </div>
                     </td>
                     <td class="p-3.5">
                         <input type="text" id="att-note-${m.id}" value="${record.note || ''}" placeholder="Catatan..." class="w-full border border-slate-200 rounded-lg px-3 py-1 text-xs focus:ring-2 focus:ring-sky-500 outline-none">
@@ -1399,13 +1448,56 @@
             document.getElementById('attendance-status-text').innerText = state.attendance[selectedDate] 
                 ? "Tersimpan untuk tanggal ini." 
                 : "Belum disimpan untuk tanggal ini.";
+
+            filterAbsensiTable();
+        };
+
+        window.changeAttStatus = function(id, status) {
+            document.getElementById(`att-status-${id}`).value = status;
+            const statuses = ['Hadir', 'Izin', 'Sakit', 'Alpa'];
+            const labels = { Hadir: 'H', Izin: 'I', Sakit: 'S', Alpa: 'A' };
+            const colors = { 
+                Hadir: 'bg-emerald-500 text-white shadow-md', 
+                Izin: 'bg-amber-500 text-white shadow-md', 
+                Sakit: 'bg-amber-500 text-white shadow-md', 
+                Alpa: 'bg-rose-500 text-white shadow-md' 
+            };
+
+            statuses.forEach(s => {
+                const btn = document.getElementById(`btn-${labels[s]}-${id}`);
+                if (btn) {
+                    if (s === status) {
+                        btn.className = `w-7 h-7 sm:w-8 sm:h-8 rounded-lg font-bold text-[10px] sm:text-xs transition ${colors[s]}`;
+                    } else {
+                        btn.className = `w-7 h-7 sm:w-8 sm:h-8 rounded-lg font-bold text-[10px] sm:text-xs transition bg-slate-100 text-slate-400 hover:bg-slate-200`;
+                    }
+                }
+            });
+        };
+
+        window.filterAbsensiTable = function() {
+            const search = (document.getElementById('search-absensi')?.value || '').toLowerCase();
+            const cls = document.getElementById('filter-class-absensi')?.value || 'Semua';
+            const rows = document.querySelectorAll('.absensi-row');
+
+            rows.forEach(row => {
+                const name = row.getAttribute('data-name').toLowerCase();
+                const rowCls = row.getAttribute('data-class');
+                const matchSearch = name.includes(search);
+                const matchClass = cls === 'Semua' || rowCls === cls;
+
+                if (matchSearch && matchClass) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
         };
 
         window.markAllPresent = function() {
             const activeMembers = state.members.filter(m => m.status === 'Aktif');
             activeMembers.forEach(m => {
-                const select = document.getElementById(`att-status-${m.id}`);
-                if (select) select.value = 'Hadir';
+                changeAttStatus(m.id, 'Hadir');
             });
             showToast("Semua anggota ditandai Hadir.", "success");
         };
@@ -1545,40 +1637,22 @@
                         <p class="font-bold text-slate-700">${item.desc}</p>
                         <p class="text-[10px] text-slate-400">${item.date}</p>
                     </div>
-                    <div class="flex items-center gap-3">
-                        <span class="font-bold text-rose-600">- Rp ${Number(item.amount).toLocaleString('id-ID')}</span>
-                        <button onclick="deleteExpenseItem('${item.id}')" class="hapus-expense-btn text-slate-300 hover:text-rose-600 transition" title="Batalkan Pengeluaran Ini"><i class="fa-solid fa-xmark"></i></button>
-                    </div>
+                    <span class="font-bold text-rose-600">- Rp ${Number(item.amount).toLocaleString('id-ID')}</span>
                 `;
                 container.appendChild(div);
             });
-            applyRolePermissions();
         }
 
-        // FUNGSI BARU: Batalkan Pengeluaran per Item
-        window.deleteExpenseItem = function(id) {
-            if (currentUserRole !== 'Pelatih Utama') return;
-            if (confirm("Hapus catatan pengeluaran ini?\n\nSaldo kas bersih akan otomatis bertambah kembali (karena pengeluaran dibatalkan).")) {
-                state.expenses = state.expenses.filter(e => e.id !== id);
-                saveLocalData();
-                showToast("Pengeluaran berhasil dibatalkan.", "success");
-                renderExpenseHistory();
-                renderDashboard();
-            }
-        };
-
-        // FUNGSI DIPERBARUI: Bersihkan Layar namun tetap simpan ke akumulasi
         window.resetPengeluaran = function() {
             if (currentUserRole !== 'Pelatih Utama') {
                 showToast("Akses ditolak: Hanya Pelatih Utama yang dapat mereset pengeluaran.", "error");
                 return;
             }
 
-            if (confirm("Apakah Anda yakin ingin menghapus SEMUA riwayat pengeluaran?\n\nTotal pengeluaran di Dashboard akan kembali 0 dan Saldo Kas Bersih akan bertambah kembali.")) {
+            if (confirm("Apakah Anda yakin ingin menghapus SEMUA riwayat pengeluaran?\n\nSaldo kas bersih akan otomatis bertambah kembali. Data yang dihapus tidak bisa dikembalikan.")) {
                 state.expenses = [];
-                state.akumulasiPengeluaran = 0; // FIX BUG: Wajib di-nol-kan agar Dashboard ikut mereset ke Rp 0
-                
-                saveLocalData(); // Ini otomatis akan melakukan sync ke Supabase
+                state.akumulasiPengeluaran = 0; // Mereset nilai akumulasi yang tersembunyi
+                saveLocalData(); 
                 showToast("Riwayat pengeluaran berhasil dikosongkan!", "success");
                 renderExpenseHistory();
                 renderDashboard();
@@ -1593,7 +1667,7 @@
 
             if (confirm("Yakin ingin menghapus SEMUA data Aktivitas & Presensi Kehadiran?\n\n* Pastikan Anda sudah Export CSV/Excel untuk rekap bulan ini sebelum menghapus.\n* Data yang dihapus tidak dapat dikembalikan!")) {
                 state.attendance = {};
-                saveLocalData();
+                saveLocalData(); 
                 showToast("Data presensi dan aktivitas berhasil dikosongkan!", "success");
                 renderDashboard();
                 loadAttendanceForDate();
@@ -1932,7 +2006,7 @@
                     <td class="p-3.5 text-center font-bold">
                         <span class="px-2 py-0.5 rounded-md ${pct >= 75 ? 'bg-emerald-50 text-emerald-700' : 'bg-rose-50 text-rose-700'}">${pct}%</span>
                     </td>
-                    <td class="p-3.5 text-right font-bold text-sky-700">Rp ${totalPaid.toLocaleString('id-ID')}</td>
+                    <td class="hidden p-3.5 text-right font-bold text-sky-700">Rp ${totalPaid.toLocaleString('id-ID')}</td>
                 `;
                 tbody.appendChild(tr);
             });
